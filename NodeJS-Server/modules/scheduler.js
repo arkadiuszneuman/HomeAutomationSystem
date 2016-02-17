@@ -35,6 +35,12 @@ exports.start = function () {
                               }
                         }, this);
                   }, this);
+
+                  var job = new CronJob('*/10 * * * *', function () {
+                        logger.info('Keeping nodejs up');
+                  }, null, true);
+
+                  jobs.push(job);
             }
 
       });

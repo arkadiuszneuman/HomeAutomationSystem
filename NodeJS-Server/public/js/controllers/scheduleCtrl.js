@@ -28,13 +28,23 @@ homeAutomationApp.controller('scheduleCtrl', function ($scope, $http, $state, $s
 
 	$scope.save = function (schedule) {
 		schedule.saving = true;
-		$http.put('api/device/' + device._id + '/schedule', schedule)
-			.success(function (data) {
-				schedule.saving = false;
-				schedule._id = data._id;
-			}).error(function (err) {
-				console.log(err);
-			});
+		if (schedule._id == null) {
+			$http.put('api/device/' + device._id + '/schedule', schedule)
+				.success(function (data) {
+					schedule.saving = false;
+					schedule._id = data._id;
+				}).error(function (err) {
+					console.log(err);
+				});
+		} else {
+			$http.post('api/device/' + device._id + '/schedule', schedule)
+				.success(function (data) {
+					schedule.saving = false;
+					schedule._id = data._id;
+				}).error(function (err) {
+					console.log(err);
+				});
+		}
 	}
 
 	$scope.delete = function (schedule) {

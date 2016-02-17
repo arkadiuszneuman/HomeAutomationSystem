@@ -1,0 +1,18 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Level</th>
+			<th>Message</th>
+			<th>Timestamp</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="log in logs">
+			<th scope="row">{{$index + 1}}</th>
+			<td>{{log.level}}</td>
+			<td>{{log.message}}</td>
+			<td>{{log.timestamp  | date:'short'}}</td>
+		</tr>
+	</tbody>
+</table>

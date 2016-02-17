@@ -54,11 +54,13 @@
                         </div>
                     </div>
                     <button class="btn" ng-class="{'btn-success':device.status, 'btn-danger':!device.status}" ng-click="changeStatus(device)"
-                    ladda="device.changingStatus" ng-disabled="device.connectionError">
-                        <span ng-show="device.status">Turn off</span>
-                        <span ng-show="!device.status">Turn on</span>
+                    ladda="device.changingStatus" ng-hide="device.connectionError">
+                        <span ng-show="device.status"><i class="fa fa-power-off"></i></span>
+                        <span ng-show="!device.status"><i class="fa fa-plug"></i></span>
                     </button>
-                    <button class="btn btn-primary" ng-click="schedule(device)">Schedule</button>
+                    <button class="btn btn-warning" ng-click="refresh(device)"
+                        ladda="device.reconnecting" ng-show="device.connectionError"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-primary" ng-click="schedule(device)"><i class="fa fa-calendar"></i></button>
                 </div>
             </div>
         </div>

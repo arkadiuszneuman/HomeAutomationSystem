@@ -5683,7 +5683,7 @@ a.hiddenanchor{
 #login{
     z-index: 22;
 }
-#toregister:target ~ #wrapper #register,
+/*#toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
     z-index: 22;
     -webkit-animation-name: fadeInLeft;
@@ -5697,14 +5697,14 @@ a.hiddenanchor{
     -ms-animation-delay: .1s;
     animation-delay: .1s;
 }
-#toregister:target ~ #wrapper #login,
+#register:target ~ #wrapper #login,
 #tologin:target ~ #wrapper #register{
     -webkit-animation-name: fadeOutLeft;
     -moz-animation-name: fadeOutLeft;
     -ms-animation-name: fadeOutLeft;
     -o-animation-name: fadeOutLeft;
     animation-name: fadeOutLeft;
-}
+}*/
 
 /** the actual animation, credit where due : http://daneden.me/animate/ ***/
 .animate{

@@ -56,7 +56,7 @@ module.exports = function (io) {
     });
   });
 
-  router.post('/device/:id/:status', function (req, res) {
+  router.post('/device/:id/status/:status', function (req, res) {
     logger.info('Setting device id: ' + req.params.id + ' status: ' + req.params.status);
     var statusToSend = req.params.status == 'true' ? '1' : '0';
 

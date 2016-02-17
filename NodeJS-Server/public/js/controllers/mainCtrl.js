@@ -1,7 +1,9 @@
 
-homeAutomationApp.controller('mainCtrl', function ($scope, $http, $state) {
+homeAutomationApp.controller('mainCtrl', function ($scope, $http, $state,userService) {
   var socket = io();
 
+  $scope.sessionService = userService;
+  
   socket.on('changed status', function (changedDevice) {
     for (var i = 0; i < $scope.devices.length; i++) {
       if ($scope.devices[i]._id === changedDevice._id) {
@@ -21,6 +23,7 @@ homeAutomationApp.controller('mainCtrl', function ($scope, $http, $state) {
           device.connectionError = false;
         }).error(function (err) {
           device.connectionError = true;
+          console.log(err);
         }).finally(function () {
           device.isRefreshing = false;
           ++currentDeviceStatus;
@@ -45,12 +48,29 @@ homeAutomationApp.controller('mainCtrl', function ($scope, $http, $state) {
   $scope.changeStatus = function (device) {
     device.changingStatus = true;
     var stat = !device.status
-    $http.post('api/device/' + device._id + '/' + stat)
+    $http.post('api/device/' + device._id + '/status/' + stat)
       .success(function (data) {
         device.status = data.status;
       })
+      .error(function (err) {
+        console.log(err);
+      })
       .finally(function () {
         device.changingStatus = false;
+      });
+  }
+
+  $scope.refresh = function (device) {
+    device.reconnecting = true;
+    $http.get('api/device/' + device._id + '/status')
+      .success(function (data) {
+        device.status = data.status;
+        device.connectionError = false;
+      }).error(function (err) {
+        device.connectionError = true;
+        console.log(err);
+      }).finally(function () {
+        device.reconnecting = false;
       });
   }
 

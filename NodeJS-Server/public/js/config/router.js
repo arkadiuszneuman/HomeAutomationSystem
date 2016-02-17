@@ -18,9 +18,11 @@ homeAutomationApp.config(function ($stateProvider, $urlRouterProvider) {
       views: {
         'menu': {
           templateUrl: 'html/partials/menu.html',
+          controller: 'mainCtrl'
         },
         'content': {
           templateUrl: 'html/partials/content.html',
+          controller: 'mainCtrl'
         },
       }
     })
@@ -29,7 +31,7 @@ homeAutomationApp.config(function ($stateProvider, $urlRouterProvider) {
       url: "/receivers",
       views: {
         'main@': {
-          templateUrl: 'html/partials/pages/receivers.html',
+          templateUrl: 'html/partials/pages/receivers/receivers.html',
           controller: 'mainCtrl'
         },
       }
@@ -38,7 +40,7 @@ homeAutomationApp.config(function ($stateProvider, $urlRouterProvider) {
       url: "/add",
       views: {
         'main@': {
-          templateUrl: 'html/partials/pages/addDevice.html',
+          templateUrl: 'html/partials/pages/receivers/addDevice.html',
           controller: 'addDeviceCtrl'
         },
       }
@@ -47,8 +49,36 @@ homeAutomationApp.config(function ($stateProvider, $urlRouterProvider) {
       url: "/:id/schedule",
       views: {
         'main@': {
-          templateUrl: 'html/partials/pages/schedule.html',
+          templateUrl: 'html/partials/pages/receivers/schedule.html',
           controller: 'scheduleCtrl'
+        },
+      }
+    })
+    
+    .state('home.logs', {
+      url: "/logs",
+      views: {
+        'main@': {
+          templateUrl: 'html/partials/pages/logs/logs.html',
+          controller: 'logsCtrl'
+        },
+      }
+    })
+    .state('home.login',{
+         url: "/login",
+      views: {
+        'main@': {
+          templateUrl: 'html/partials/pages/Login/login.html',
+          controller: 'loginCtrl'
+        },
+      }
+    })
+    .state('home.register',{
+         url: "/register",
+      views: {
+        'main@': {
+          templateUrl: 'html/partials/pages/Login/register.html',
+          controller: 'registerCtrl'
         },
       }
     })

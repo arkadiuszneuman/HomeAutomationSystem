@@ -26,11 +26,13 @@
     "cron": "^1.1.0",
     "express": "^4.13.3",
     "express-rest-response": "^1.2.0",
+    "jsonwebtoken": "^5.5.4",
     "kerberos": "0.0.17",
     "mongodb": "^2.0.49",
     "mongoose": "^4.2.8",
     "nrf": "^0.8.3",
     "socket.io": "^1.3.7",
-    "winston": "^2.1.1"
+    "winston": "^2.1.1",
+    "winston-mongodb": "^1.2.0"
   }
 }
