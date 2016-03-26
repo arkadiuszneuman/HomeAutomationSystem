@@ -2,9 +2,9 @@ var logger = require('winston');
 var express = require('express');
 var models = require('../models');
 var router = express.Router();
-
-router.get('/log', function(req, res) {
-    logger.info('Getting logs list');
+    
+router
+.get('/log' ,function(req, res) {
     models.Log.find(null, null, { sort: '-_id', skip: 0, limit: 50 }, function(err, logs) {
         if (err) logger.info(err);
 

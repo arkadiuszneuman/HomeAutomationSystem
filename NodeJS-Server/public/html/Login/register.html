@@ -1,0 +1,31 @@
+<div id="register">
+    <section class="login_content">
+        <form name="registerForm" ng-submit="createUser(registerForm.$valid,user)">
+            <h1>Create Account</h1>
+            <div>
+                <input type="text" class="form-control" placeholder="Username" required ng-model="user.firstName" ng-minlength="3"/>
+            </div>
+            <div>
+                <input type="text" class="form-control" placeholder="Lastname" required  ng-model="user.lastName"/>
+            </div>
+            <div>
+                <input type="email" class="form-control" name="email" placeholder="Email" required ng-model="user.email"/>
+            </div>
+            <div>
+                <input type="password" class="form-control" placeholder="Password" required="" ng-model="user.password"/>
+            </div>
+            <div>
+                <button type="submit" ng-disabled="registerForm.$invalid">Submit</button>
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+
+                <p class="change_link">Already a member ?
+                    <a ui-sref="home.login"> Log in </a>
+                </p>
+                <div class="clearfix"></div>
+                <br />
+            </div>
+        </form>
+    </section>
+</div>

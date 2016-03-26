@@ -2,7 +2,7 @@
     <div class="left_col scroll-view">
 
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+            <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
         </div>
         <div class="clearfix"></div>
 
@@ -13,7 +13,7 @@
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Anthony Fernando</h2>
+                <h2>{{user.firstName}} {{user.lastName}}</h2>
             </div>
         </div>
         <!-- /menu prile quick info -->
@@ -26,9 +26,7 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <ul class="nav side-menu">
-                        <li><a ui-sref="home.receivers"><i class="fa fa-home"></i> Receivers</a></li>
-                    </ul>
+                    <li><a ui-sref="home.receivers"><i class="fa fa-home"></i> Receivers</a></li>
                 </ul>
             </div>
             <div class="menu_section">

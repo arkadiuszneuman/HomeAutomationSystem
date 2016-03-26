@@ -12,9 +12,7 @@
     "Domoticz"
   ],
   "homepage": "https://github.com/arkadiuszneuman/HomeAutomationSystem",
-  "moduleType": [
-    "node"
-  ],
+  "moduleType": [],
   "ignore": [
     "**/.*",
     "node_modules",

@@ -3,16 +3,20 @@ var app = express();
 var bodyParser = require('body-parser');
 var restResponse = require('express-rest-response');
 var logger = require('winston');
+var midleware = require('./routes/middleware');
 var scheduler = require('./modules/scheduler');
 var path = require('path');
 var dir = require('node-dir');
+
+//Auth part
+var jwt = require('jsonwebtoken');
+var config = require('./modules/authConfig');
 
 //configure logger for mongo
 require('winston-mongodb').MongoDB;
 logger.add(logger.transports.MongoDB, {
     db: 'mongodb://localhost/homeautomationsystem'
 });
-
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/homeautomationsystem', function (err) {
@@ -36,9 +40,11 @@ app.get('/', function (req, res) {
     res.render(__dirname + '/public/html/index.ejs');
 });
 
+
 //api
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 var server = app.listen(process.env.PORT || 3000, function () {
     var host = server.address().address;
@@ -52,6 +58,14 @@ var deviceRoutes = require('./routes/device')(io);
 var scheduleRoutes = require('./routes/schedule');
 var logRoutes = require('./routes/log');
 var dashboardRoutes = require('./routes/dashboard');
+var userRoutes = require('./routes/users');
+var loginRoutes = require('./routes/login');
+
+app.use('/api', loginRoutes);
+app.use('/api', userRoutes);
+
+app.use(midleware.methodLogger);
+app.use(midleware.isAuth);
 
 app.use('/api', deviceRoutes);
 app.use('/api', scheduleRoutes);
@@ -64,6 +78,7 @@ io.on('connection', function (socket) {
         logger.info('user disconnected');
     });
 });
+
 
 process.on('uncaughtException', function (err) {
     logger.error(err);

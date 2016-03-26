@@ -1,0 +1,27 @@
+<div id="login">
+    <section class="login_content">
+        <form name="loginForm">
+            <h1>Login</h1>
+            <div>
+                <input type="email" class="form-control" placeholder="Email" ng-model="loginCredentials.email" autocomplete="true"/>
+            </div>
+            <div>
+                <input type="password" class="form-control" placeholder="Password" ng-model="loginCredentials.password" required/>
+            </div>
+
+            <div>
+                <button class="btn btn-default submit" ng-click="loginUser(loginForm.$valid)" ng-disabled="loginForm.$invalid">Log in</button>
+                <!--<a class="reset_pass" href="#">Lost your password?</a>-->
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+
+                <p class="change_link">New to site?
+                    <a ui-sref="home.register" class="to_register"> Create Account </a>
+                </p>
+                <div class="clearfix"></div>
+                <br />
+            </div>
+        </form>
+    </section>
+</div>

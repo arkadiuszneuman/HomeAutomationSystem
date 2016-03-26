@@ -1,7 +1,17 @@
 
-homeAutomationApp.controller('mainCtrl', function ($scope, $http, $state) {
+homeAutomationApp.controller('mainCtrl', function ($scope, $http, $state,userService,authService) {
   var socket = io();
 
+  $scope.user = userService.user();
+  
+  $scope.logout = function(){
+    authService.Logout(function(result){
+       if(result.success){
+           $state.go('home.login');
+       }
+    });
+  };
+  
   socket.on('changed status', function (changedDevice) {
     for (var i = 0; i < $scope.devices.length; i++) {
       if ($scope.devices[i]._id === changedDevice._id) {

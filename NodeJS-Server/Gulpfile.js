@@ -20,7 +20,7 @@ function swallowError(error) {
     this.emit('end');
 }
 
-gulp.task('js', ['js_bower'], function () {
+gulp.task('js', function () {
     return gulp.src(['public/js/**/*.js', '!public/js/template/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(ngAnnotate({ single_quotes: true }))
@@ -71,6 +71,7 @@ gulp.task('js_bower', function () {
 
 gulp.task('watch', function () {
     gulp.watch('public/js/**/*.js', ['js']);
+    gulp.watch('bower_components/**/*.js', ['js_bower']);
     gulp.watch('public/**/*.less', ['less']);
     gulp.watch('public/css/**/*.css', ['css']);
 });
